@@ -1,4 +1,5 @@
 package taxonomia;
+import java.io.File;
 import java.util.*;
 
 /**
@@ -6,16 +7,12 @@ import java.util.*;
  */
 public class Especie extends Componente {
 
+    private File imagen;
     /**
      * Default constructor
      */
     public Especie() {
     }
-
-    /**
-     * 
-     */
-    private void imagen;
 
     /**
      * 

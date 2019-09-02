@@ -5,17 +5,13 @@ import java.util.*;
  * 
  */
 public abstract class Estado {
-
+    
+    private int estado;
     /**
      * Default constructor
      */
     public Estado() {
     }
-
-    /**
-     * 
-     */
-    private void estado;
 
 
     /**

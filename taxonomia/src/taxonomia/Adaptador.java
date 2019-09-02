@@ -11,16 +11,6 @@ public class Adaptador implements IAdaptador {
      */
     public Adaptador() {
     }
-
-
-
-    /**
-     * 
-     */
-    public void generarInforme() {
-        // TODO implement here
-    }
-
     /**
      * 
      */

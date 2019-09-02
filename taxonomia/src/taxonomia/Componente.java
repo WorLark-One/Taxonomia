@@ -5,24 +5,14 @@ import java.util.*;
  * 
  */
 public abstract class Componente {
-
+    private String nombre;
+    private String tipoDeNodo;
     /**
      * Default constructor
      */
     public Componente() {
     }
-
-    /**
-     * 
-     */
-    private void nombre;
-
-    /**
-     * 
-     */
-    private void tipoNodo;
-
-
+    
     /**
      * 
      */
