@@ -2,7 +2,7 @@ package taxonomia;
 import java.util.*;
 
 /**
- * 
+ * Clase adaptador
  */
 public class Adaptador implements IAdaptador {
 
