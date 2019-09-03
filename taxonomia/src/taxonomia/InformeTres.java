@@ -4,12 +4,12 @@ import java.util.*;
 /**
  * 
  */
-public class InformeMierda extends Informe {
+public class InformeTres extends Informe {
 
     /**
      * Default constructor
      */
-    public InformeMierda() {
+    public InformeTres() {
     }
 
     /**
