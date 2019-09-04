@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class General extends Componente {
+public class General {
 
     /**
      * Default constructor
