@@ -85,7 +85,8 @@ public class Controlador {
                 default:
                     break;
             }            
-        }   
+        }
+        adaptador.guardarDatos(d);
         raiz.agregarSubTaxon(d);
     }
 }

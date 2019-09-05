@@ -32,6 +32,10 @@ public class Adaptador implements IAdaptador {
         }
     
     }
+    
+    public void guardarDatos(Compuesto dominio){
+        //aqui guarda la ramita en donde quieran        
+    }
 
     @Override
     public void generarInforme1() {
