@@ -15,7 +15,7 @@ public abstract class Componente {
      */
     public Componente(String nombre, String tipoTaxon) {
         this.nombre = nombre;
-        this.tipoTaxon = tipoTaxon;
+        this.tipoTaxon = tipoTaxon;        
     }    
     /**
      * Metodo que retorna el nombre de un taxon.

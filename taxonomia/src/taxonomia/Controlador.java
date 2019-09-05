@@ -9,9 +9,9 @@ public class Controlador {
 
     //Variable que ocupa el singleton
     private static Controlador controlador;
-
-    private Adaptador adaptador;
     
+    private Adaptador adaptador;
+        
     private Compuesto raiz;
     
     public Controlador(){
@@ -46,9 +46,46 @@ public class Controlador {
 
     /**
      * Metodo que se encarga de crear una especie
+     * @param lista Lista de los nombres de los distintos taxones
      */
     public void crearEspecie(String[] lista) {
-        // TODO implement here
         
+        Especie e = new Especie(lista[7],"Especie");
+        Compuesto g = new Compuesto(lista[6],"Genero");
+        Compuesto f = new Compuesto(lista[5],"Familia");
+        Compuesto o = new Compuesto(lista[4],"Orden");
+        Compuesto c = new Compuesto(lista[3],"Clase");
+        Compuesto p = new Compuesto(lista[2],"Phylum");
+        Compuesto r = new Compuesto(lista[1],"Reino");
+        Compuesto d = new Compuesto(lista[0],"Dominio");
+        
+        for(int i = 7;i>0;i--){
+            switch(i){
+                case 0:
+                    d.agregarSubTaxon(p);
+                    break;
+                case 1:
+                    r.agregarSubTaxon(p);
+                    break;
+                case 2:
+                    p.agregarSubTaxon(o);
+                    break;
+                case 3:
+                    c.agregarSubTaxon(c);
+                    break;
+                case 4:
+                    o.agregarSubTaxon(f);
+                    break;
+                case 5:
+                    f.agregarSubTaxon(g);
+                    break;
+                case 6:
+                    g.agregarSubTaxon(e);
+                    break;
+                default:
+                    break;
+            }
+            raiz.agregarSubTaxon(d);
+        }   
     }
 }
