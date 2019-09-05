@@ -5,6 +5,8 @@
  */
 package taxonomia;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ruben
@@ -470,13 +472,26 @@ public class InterfazGUI extends javax.swing.JFrame {
         lista[5]=this.familia.getText();
         lista[6]=this.genero.getText();
         lista[7]=this.especie.getText();
-
-        
-        if(!"".equals(lista[0])){
-            
+        for(int i=0; i<lista.length; i++){
+            switch (lista[i]) {
+                case "":
+                    JOptionPane.showMessageDialog(null, "Mensaje de advertencia", "Le falta rellenar un dato", JOptionPane.WARNING_MESSAGE);
+                    return;
+                    
+                default:
+                    break;
+            }
         }
-        
-        this.controlador.crearEspecie(lista);       
+        this.controlador.crearEspecie(lista);   
+        JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
+        this.dominio.setText("");
+        this.reino.setText("");
+        this.phylum.setText("");
+        this.clase.setText("");
+        this.orden.setText("");;
+        this.familia.setText("");
+        this.genero.setText("");
+        this.especie.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
