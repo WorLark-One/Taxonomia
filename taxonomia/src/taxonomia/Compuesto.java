@@ -16,6 +16,7 @@ public class Compuesto extends Componente {
         super(nombre,tipoTaxon);
         this.listaSubTaxones = new ArrayList();
     }
+    
     /**
      * 
      */

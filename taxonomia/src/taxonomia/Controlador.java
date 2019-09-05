@@ -12,9 +12,11 @@ public class Controlador {
 
     private Adaptador adaptador;
     
+    private Compuesto raiz;
     
     public Controlador(){
         this.adaptador=new Adaptador();
+        this.raiz= new Compuesto("raiz", "raiz");
     }
     
     /**
@@ -45,8 +47,8 @@ public class Controlador {
     /**
      * Metodo que se encarga de crear una especie
      */
-    public void crearEspecie(String nombre, String tipoTaxon, File imagen) {
+    public void crearEspecie(String[] lista) {
         // TODO implement here
-
+        
     }
 }
