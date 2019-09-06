@@ -50,7 +50,7 @@ public class Controlador {
      */
     public void crearEspecie(String[] lista, File file) {
         
-        Especie e = new Especie(lista[7],"Especie");
+        Especie e = new Especie(lista[7],"Especie", file);
         Compuesto g = new Compuesto(lista[6],"Genero");
         Compuesto f = new Compuesto(lista[5],"Familia");
         Compuesto o = new Compuesto(lista[4],"Orden");
@@ -60,8 +60,8 @@ public class Controlador {
         Compuesto d = new Compuesto(lista[0],"Dominio");
         d.agregarSubTaxon(r);
         r.agregarSubTaxon(p);
-        p.agregarSubTaxon(o);
-        c.agregarSubTaxon(c);
+        p.agregarSubTaxon(c);
+        c.agregarSubTaxon(o);
         o.agregarSubTaxon(f);
         f.agregarSubTaxon(g);
         g.agregarSubTaxon(e);
