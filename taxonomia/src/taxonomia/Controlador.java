@@ -68,6 +68,6 @@ public class Controlador {
         adaptador.guardarDatos(d);
         raiz.agregarSubTaxon(d);
         //Funcion que se encarga de imprimir el arbol, sirve para validar
-        raiz.imprimirArbol();
+        //raiz.imprimirArbol();
     }
 }
