@@ -47,4 +47,16 @@ public class Compuesto extends Componente {
         return this.listaSubTaxones.get(posicion);
     }
 
+    public void imprimirArbol(){
+        for(int i=0; i<this.listaSubTaxones.size();i++){
+            System.out.println(this.listaSubTaxones.get(i).nombre);
+            if("Especie".equals(this.listaSubTaxones.get(i).getTipoTaxon())){
+                Especie c=(Especie) this.listaSubTaxones.get(i);
+                System.out.println(c.nombre);
+                return;
+            }
+            Compuesto c=(Compuesto) this.listaSubTaxones.get(i);
+            c.imprimirArbol();
+        }
+    }
 }

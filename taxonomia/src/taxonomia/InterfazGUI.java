@@ -476,7 +476,7 @@ public class InterfazGUI extends javax.swing.JFrame {
                     break;
             }
         }
-        this.controlador.crearEspecie(lista);   
+        this.controlador.crearEspecie(lista, this.file.getSelectedFile());   
         JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
         this.dominio.setText("");
         this.reino.setText("");
@@ -486,16 +486,16 @@ public class InterfazGUI extends javax.swing.JFrame {
         this.familia.setText("");
         this.genero.setText("");
         this.especie.setText("");
+        this.file.removeAll();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try{
-         JFileChooser file=new JFileChooser();
-         file.showOpenDialog(this);
-         File abre=file.getSelectedFile();
+         this.file.showOpenDialog(this);
+         File abre=this.file.getSelectedFile();
          if(abre!=null){     
             FileReader archivos=new FileReader(abre);
-            String tipo = file.getTypeDescription(abre);
+            String tipo = this.file.getTypeDescription(abre);
             if(!(("Archivo JPG").equals(tipo) || ("Archivo PNG").equals(tipo))){
                 JOptionPane.showMessageDialog(null, "El tipo del archivo no era una imagen", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
@@ -508,14 +508,14 @@ public class InterfazGUI extends javax.swing.JFrame {
            return;
           }
         
-        JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");
-                    
+        JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
+    private JFileChooser file=new JFileChooser();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField clase;
     private javax.swing.JTextField dominio;
