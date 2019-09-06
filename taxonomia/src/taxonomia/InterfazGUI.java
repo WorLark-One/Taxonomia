@@ -500,14 +500,17 @@ public class InterfazGUI extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "El tipo del archivo no era una imagen", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-          }    
+          }  if(abre==null){ 
+                JOptionPane.showMessageDialog(null, "dejo en blanco la opcion", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+          }  
          }
          catch(IOException ex)
          {
            JOptionPane.showMessageDialog(null,ex+"" + "\nNo se ha encontrado el archivo", "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
            return;
           }
-        
+
         JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");         
     }//GEN-LAST:event_jButton1ActionPerformed
 
