@@ -5,7 +5,10 @@
  */
 package taxonomia;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -466,7 +469,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         for(int i=0; i<lista.length; i++){
             switch (lista[i]) {
                 case "":
-                    JOptionPane.showMessageDialog(null, "Mensaje de advertencia", "Le falta rellenar un dato", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Le falta rellenar un dato", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
                     return;
                     
                 default:
@@ -486,39 +489,26 @@ public class InterfazGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        JFileChooser select = new javax.swing.JFileChooser();
-        select.showOpenDialog(this);
-       
-        String aux="";
-        String texto="";
-        try
-        {
-        /llamamos el metodo que permite cargar la ventana*/
-        JFileChooser file=new JFileChooser();
-        file.showOpenDialog(this);
-        /abrimos el archivo seleccionado*/
-        File abre=file.getSelectedFile();
- 
-   //recorremos el archivo, lo leemos para plasmarlo
-   //en el area de texto/
-   if(abre!=null)
-   {
-      FileReader archivos=new FileReader(abre);
-      BufferedReader lee=new BufferedReader(archivos);
-      while((aux=lee.readLine())!=null)
-      {
-         texto+= aux+ "\n";
-      }
-         lee.close();
-    }
-   }
-   catch(IOException ex)
-   {
-     JOptionPane.showMessageDialog(null,ex+"" +
-           "\nNo se ha encontrado el archivo",
-                 "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
-    }
-  return texto;//El texto se almacena en el JTextArea
+        try{
+         JFileChooser file=new JFileChooser();
+         file.showOpenDialog(this);
+         File abre=file.getSelectedFile();
+         if(abre!=null){     
+            FileReader archivos=new FileReader(abre);
+            String tipo = file.getTypeDescription(abre);
+            if(!(("Archivo JPG").equals(tipo) || ("Archivo PNG").equals(tipo))){
+                JOptionPane.showMessageDialog(null, "El tipo del archivo no era una imagen", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+          }    
+         }
+         catch(IOException ex)
+         {
+           JOptionPane.showMessageDialog(null,ex+"" + "\nNo se ha encontrado el archivo", "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
+           return;
+          }
+        
+        JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");
                     
     }//GEN-LAST:event_jButton1ActionPerformed
 
