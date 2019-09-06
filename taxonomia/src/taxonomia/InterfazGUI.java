@@ -5,10 +5,12 @@
  */
 package taxonomia;
 
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
@@ -295,7 +297,9 @@ public class InterfazGUI extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setBackground(new java.awt.Color(204, 255, 255));
+        jLabel1.setOpaque(true);
+        jLabel1.setPreferredSize(new java.awt.Dimension(600, 410));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -306,16 +310,16 @@ public class InterfazGUI extends javax.swing.JFrame {
                 .addComponent(jButton6)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(793, 793, 793)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton6)
                 .addContainerGap())
         );
@@ -352,7 +356,7 @@ public class InterfazGUI extends javax.swing.JFrame {
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
@@ -376,8 +380,8 @@ public class InterfazGUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -385,9 +389,9 @@ public class InterfazGUI extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(label10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(553, 553, 553)
+                .addGap(589, 589, 589)
                 .addComponent(label11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(61, 61, 61))
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -406,16 +410,16 @@ public class InterfazGUI extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -490,28 +494,36 @@ public class InterfazGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.file.removeAll();                              
         try{
-         this.file.showOpenDialog(this);
-         File abre=this.file.getSelectedFile();
+         JFileChooser file=new JFileChooser();
+         file.showOpenDialog(this);
+         File abre=file.getSelectedFile();
          if(abre!=null){     
             FileReader archivos=new FileReader(abre);
-            String tipo = this.file.getTypeDescription(abre);
+            String tipo = file.getTypeDescription(abre);
             if(!(("Archivo JPG").equals(tipo) || ("Archivo PNG").equals(tipo))){
                 JOptionPane.showMessageDialog(null, "El tipo del archivo no era una imagen", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
                 return;
             }
-          }  if(abre==null){ 
-                JOptionPane.showMessageDialog(null, "dejo en blanco la opcion", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
-                return;
-          }  
+            this.jPanel2.remove(jLabel1);
+            ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
+            
+            this.jLabel1.setIcon(i);
+            this.jPanel2.add(this.jLabel1);
+            this.pack();
+            this.repaint();
+          }    
          }
          catch(IOException ex)
          {
            JOptionPane.showMessageDialog(null,ex+"" + "\nNo se ha encontrado el archivo", "ADVERTENCIA!!!",JOptionPane.WARNING_MESSAGE);
            return;
           }
-
-        JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");         
+        
+        JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");
+                   
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
