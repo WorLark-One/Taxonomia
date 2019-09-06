@@ -122,7 +122,7 @@ public class ConectarBaseDeDatos {
                 resultado.close();
                 st.close();
                 //conexion.close();
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("ERROR DE CONEXION");
             }
         }
