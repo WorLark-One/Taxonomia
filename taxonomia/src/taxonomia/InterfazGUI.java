@@ -73,6 +73,10 @@ public class InterfazGUI extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         label12 = new java.awt.Label();
+        InformeImg = new javax.swing.JTextField();
+        InformeTres = new javax.swing.JTextField();
+        label13 = new java.awt.Label();
+        label14 = new java.awt.Label();
         jPanel4 = new javax.swing.JPanel();
         label10 = new java.awt.Label();
         label11 = new java.awt.Label();
@@ -344,6 +348,22 @@ public class InterfazGUI extends javax.swing.JFrame {
         label12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label12.setText("Ingresar Especie");
 
+        InformeImg.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        InformeImg.setName("InformeImg"); // NOI18N
+
+        InformeTres.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        InformeTres.setName("InformeTres"); // NOI18N
+
+        label13.setAlignment(java.awt.Label.CENTER);
+        label13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label13.setName(""); // NOI18N
+        label13.setText("Texto");
+
+        label14.setAlignment(java.awt.Label.CENTER);
+        label14.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label14.setName(""); // NOI18N
+        label14.setText("Texto");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -352,21 +372,36 @@ public class InterfazGUI extends javax.swing.JFrame {
                 .addGap(74, 74, 74)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(label12, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField1)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)))
+                    .addComponent(jTextField1)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
                 .addGap(194, 194, 194)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InformeImg))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(label13, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                    .addComponent(InformeTres)
+                    .addComponent(label14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(126, 126, 126))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(label12, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label12, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                    .addComponent(label13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(label14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(InformeTres)
+                    .addComponent(InformeImg)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
@@ -550,6 +585,8 @@ public class InterfazGUI extends javax.swing.JFrame {
 
     private JFileChooser file=new JFileChooser();
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField InformeImg;
+    private javax.swing.JTextField InformeTres;
     private javax.swing.JTextField clase;
     private javax.swing.JTextField dominio;
     private javax.swing.JTextField especie;
@@ -570,6 +607,8 @@ public class InterfazGUI extends javax.swing.JFrame {
     private java.awt.Label label10;
     private java.awt.Label label11;
     private java.awt.Label label12;
+    private java.awt.Label label13;
+    private java.awt.Label label14;
     private java.awt.Label label2;
     private java.awt.Label label3;
     private java.awt.Label label4;
