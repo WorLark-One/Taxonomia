@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -180,6 +181,54 @@ public class ConectarBaseDeDatos {
             }
         }
         return cadena;
+
+    }
+    
+    public ArrayList<String[]> consultaSQL3(String s) throws SQLException {
+        ArrayList<String[]> consulta = new ArrayList<>();
+        String[] cadena ;
+        if (conexion != null)// si hay conexion
+        {
+            try {
+                java.sql.Statement st = conexion.createStatement();
+                String sql = "select especie,genero,familia,orden,clase,filo_division,dominio from Categoria where reino = "+s;
+                ResultSet resultado = st.executeQuery(sql);
+                while (resultado.next()) {
+                    cadena =  new String[7];
+                    int i =0;
+                    String especie = resultado.getString("especie");
+                    cadena[i] = especie;
+                    i++;
+                    String genero = resultado.getString("genero");
+                    cadena[i] = genero;
+                    i++;
+                    String familia = resultado.getString("familia");
+                    cadena[i] = familia;
+                    i++;
+                    String orden = resultado.getString("orden");
+                    cadena[i] = orden;
+                    i++;
+                    String clase = resultado.getString("clase");
+                    cadena[i] = clase;
+                    i++;
+                    String filo_division = resultado.getString("filo_division");
+                    cadena[i] = filo_division;
+                    i++;
+                    String dominio = resultado.getString("dominio");
+                    cadena[i] = dominio;
+                    consulta.add(cadena);
+                    // se obtuvieron todos los datos, falta que quieren que retorne los datos.
+                    //String reino = resultado.getString("apellido");// para capturar la imagen
+                    
+                }
+                resultado.close();
+                st.close();
+                //conexion.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR DE CONEXION");
+            }
+        }
+        return consulta;
 
     }
 

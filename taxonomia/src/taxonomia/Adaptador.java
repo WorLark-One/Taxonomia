@@ -1,4 +1,5 @@
 package taxonomia;
+import java.awt.Image;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -43,7 +44,7 @@ public class Adaptador implements IAdaptador {
             this.generarInforme1(s);
         }
         if (n==2) {
-            this.generarInforme2(s);
+            //this.generarInforme2(s);
         }
         if (n==3) {
             this.generarInforme3(s);
@@ -91,27 +92,32 @@ public class Adaptador implements IAdaptador {
         //s = especie del primer infome 
         System.out.println("especie: "+s);
         this.CBD = new ConectarBaseDeDatos();
-        this.infTexto = new InformeTexto();
         try {
-            this.infTexto.generarInforme(this.CBD.consultaSQL1(s));
+            this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s));
+            this.infTexto.generarInforme();
         } catch (SQLException ex) {
             Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }
 
     @Override
-    public void generarInforme2(String s) {
-        System.out.println("Texto: "+s);
-        this.infImagen = new InformeImagen();
+    public void generarInforme2(File i) {
+        //System.out.println("Texto: "+s);
+        this.infImagen = new InformeImagen(i);
         this.infImagen.generarInforme();
     }
 
     @Override
     public void generarInforme3(String s) {
         System.out.println("Texto: "+s);
-        this.infTres = new InformeTres();
-        this.infTres.generarInforme();
+        this.CBD = new ConectarBaseDeDatos();
+        try {
+            this.infTres = new InformeTres(this.CBD.consultaSQL3(s));
+            this.infTres.generarInforme();
+        } catch (SQLException ex) {
+            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
 

@@ -368,6 +368,11 @@ public class InterfazGUI extends javax.swing.JFrame {
 
         InformeTres.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         InformeTres.setName("InformeTres"); // NOI18N
+        InformeTres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InformeTresActionPerformed(evt);
+            }
+        });
 
         label13.setAlignment(java.awt.Label.CENTER);
         label13.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -377,7 +382,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         label14.setAlignment(java.awt.Label.CENTER);
         label14.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         label14.setName(""); // NOI18N
-        label14.setText("Texto");
+        label14.setText("Ingresar Reino");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -421,6 +426,9 @@ public class InterfazGUI extends javax.swing.JFrame {
                     .addComponent(jButton5))
                 .addContainerGap())
         );
+
+        label14.getAccessibleContext().setAccessibleName("Ingresar Reino");
+        label14.getAccessibleContext().setAccessibleDescription("");
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -578,6 +586,8 @@ public class InterfazGUI extends javax.swing.JFrame {
             this.jPanel2.add(this.jLabel1);
             this.pack();
             this.repaint();
+            //Adaptador a = new Adaptador();
+            //a.generarInforme2();
           }    
          }
          catch(IOException ex)
@@ -629,6 +639,10 @@ public class InterfazGUI extends javax.swing.JFrame {
         
      this.InformeTres.setText("");
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void InformeTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeTresActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InformeTresActionPerformed
 
     /**
      * @param args the command line arguments

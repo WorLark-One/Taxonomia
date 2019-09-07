@@ -19,5 +19,6 @@ public abstract class Informe {
     public void generarInforme() {
         // TODO implement here
     }
+    
 
 }
