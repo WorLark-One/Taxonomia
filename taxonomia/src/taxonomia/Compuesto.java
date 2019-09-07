@@ -59,4 +59,14 @@ public class Compuesto extends Componente {
             c.imprimirArbol();
         }
     }
+
+    public ArrayList<Componente> getListaSubTaxones() {
+        return listaSubTaxones;
+    }
+
+    public void setListaSubTaxones(ArrayList<Componente> listaSubTaxones) {
+        this.listaSubTaxones = listaSubTaxones;
+    }
+    
+    
 }

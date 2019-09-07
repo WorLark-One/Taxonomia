@@ -10,6 +10,8 @@ public interface IAdaptador {
      * 
      * @param n
      */
+    
+    public void insertarHaciaBD();
     public void generarInforme(int n);
     
     public void generarInforme1();

@@ -18,6 +18,12 @@ public class ConectarBaseDeDatos {
 
     private Connection conexion = null;
 
+    public ConectarBaseDeDatos() {
+    //supuestamente creariamos la conexion o no aqui
+    }
+    
+    
+
     public Connection getConexion() {
         return conexion;
     }
