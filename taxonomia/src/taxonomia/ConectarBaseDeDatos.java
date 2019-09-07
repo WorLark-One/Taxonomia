@@ -134,5 +134,53 @@ public class ConectarBaseDeDatos {
         }
 
     }
+    
+    public String[] consultaSQL1(String s) throws SQLException {
+        String[] cadena =  new String[8];
+        int i =0;
+        cadena[i] = s;
+        i++;
+        if (conexion != null)// si hay conexion
+        {
+            try {
+                java.sql.Statement st = conexion.createStatement();
+                String sql = "select genero,familia,orden,clase,filo_division,reino,dominio from Categoria where especie = "+s;
+                ResultSet resultado = st.executeQuery(sql);
+                while (resultado.next()) {
+                    String genero = resultado.getString("genero");
+                    cadena[i] = genero;
+                    i++;
+                    String familia = resultado.getString("familia");
+                    cadena[i] = familia;
+                    i++;
+                    String orden = resultado.getString("orden");
+                    cadena[i] = orden;
+                    i++;
+                    String clase = resultado.getString("clase");
+                    cadena[i] = clase;
+                    i++;
+                    String filo_division = resultado.getString("filo_division");
+                    cadena[i] = filo_division;
+                    i++;
+                    String reino = resultado.getString("reino");
+                    cadena[i] = reino;
+                    i++;
+                    String dominio = resultado.getString("dominio");
+                    cadena[i] = dominio;
+                    
+                    // se obtuvieron todos los datos, falta que quieren que retorne los datos.
+                    //String reino = resultado.getString("apellido");// para capturar la imagen
+                    
+                }
+                resultado.close();
+                st.close();
+                //conexion.close();
+            } catch (SQLException e) {
+                System.out.println("ERROR DE CONEXION");
+            }
+        }
+        return cadena;
+
+    }
 
 }

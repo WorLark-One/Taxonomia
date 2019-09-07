@@ -1,5 +1,8 @@
 package taxonomia;
 import java.io.File;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Clase adaptador
@@ -87,8 +90,13 @@ public class Adaptador implements IAdaptador {
     public void generarInforme1(String s) {
         //s = especie del primer infome 
         System.out.println("especie: "+s);
+        this.CBD = new ConectarBaseDeDatos();
         this.infTexto = new InformeTexto();
-        this.infTexto.generarInforme();
+        try {
+            this.infTexto.generarInforme(this.CBD.consultaSQL1(s));
+        } catch (SQLException ex) {
+            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
 
