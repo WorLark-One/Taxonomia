@@ -16,8 +16,8 @@ public interface IAdaptador {
     
     public void generarInforme1(String s);
     
-    public void generarInforme2();
+    public void generarInforme2(String s);
     
-    public void generarInforme3();
+    public void generarInforme3(String s);
 
 }

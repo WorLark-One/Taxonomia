@@ -40,10 +40,10 @@ public class Adaptador implements IAdaptador {
             this.generarInforme1(s);
         }
         if (n==2) {
-            this.generarInforme2();
+            this.generarInforme2(s);
         }
         if (n==3) {
-            this.generarInforme3();
+            this.generarInforme3(s);
             
         }
     
@@ -93,13 +93,15 @@ public class Adaptador implements IAdaptador {
     }
 
     @Override
-    public void generarInforme2() {
+    public void generarInforme2(String s) {
+        System.out.println("Texto: "+s);
         this.infImagen = new InformeImagen();
         this.infImagen.generarInforme();
     }
 
     @Override
-    public void generarInforme3() {
+    public void generarInforme3(String s) {
+        System.out.println("Texto: "+s);
         this.infTres = new InformeTres();
         this.infTres.generarInforme();
     }
