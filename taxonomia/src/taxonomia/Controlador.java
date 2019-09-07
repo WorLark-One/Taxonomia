@@ -39,9 +39,9 @@ public class Controlador {
      * Metodo que se encarga de redireccionar al Adaptador el informe que se desea generar
      * @param opcion
      */
-    public void generarInforme(int opcion) {
+    public void generarInforme(int opcion,String s) {
         // TODO implement here
-        this.adaptador.generarInforme(opcion);
+        this.adaptador.generarInforme(opcion,s);
     }
 
     /**

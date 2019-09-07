@@ -35,9 +35,9 @@ public class Adaptador implements IAdaptador {
      * 
      */
     @Override
-    public void generarInforme(int n) {
+    public void generarInforme(int n,String s) {
         if (n==1) {
-            this.generarInforme1();
+            this.generarInforme1(s);
         }
         if (n==2) {
             this.generarInforme2();
@@ -84,7 +84,9 @@ public class Adaptador implements IAdaptador {
     
    
     @Override
-    public void generarInforme1() {
+    public void generarInforme1(String s) {
+        //s = especie del primer infome 
+        System.out.println("especie: "+s);
         this.infTexto = new InformeTexto();
         this.infTexto.generarInforme();
         
