@@ -6,6 +6,7 @@
 package taxonomia;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -508,7 +509,9 @@ public class InterfazGUI extends javax.swing.JFrame {
             }
             this.jPanel2.remove(jLabel1);
             ImageIcon i = new ImageIcon(abre.getAbsolutePath()); 
-            
+            Image img = i.getImage();
+            img = img.getScaledInstance(600, 410, java.awt.Image.SCALE_SMOOTH);
+            i = new ImageIcon(img);
             this.jLabel1.setIcon(i);
             this.jPanel2.add(this.jLabel1);
             this.pack();
