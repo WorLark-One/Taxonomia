@@ -63,20 +63,20 @@ public class InterfazGUI extends javax.swing.JFrame {
         reino = new javax.swing.JTextField();
         dominio = new javax.swing.JTextField();
         clase = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        añadirImagen = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        agregarEspecie = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         label10 = new java.awt.Label();
         label11 = new java.awt.Label();
         jPanel3 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        InformeTres = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        InformeImg = new javax.swing.JTextField();
+        InformeUno = new javax.swing.JButton();
+        InformeUnoText = new javax.swing.JTextField();
+        InformeTresText = new javax.swing.JTextField();
+        informeTres = new javax.swing.JButton();
+        informeDos = new javax.swing.JButton();
+        InformeDosText = new javax.swing.JTextField();
         label12 = new java.awt.Label();
         label13 = new java.awt.Label();
         label14 = new java.awt.Label();
@@ -146,6 +146,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         label9.setText("Dominio");
 
         especie.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        especie.setName(""); // NOI18N
         especie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 especieActionPerformed(evt);
@@ -201,10 +202,11 @@ public class InterfazGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Añadir imagen");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        añadirImagen.setText("Añadir imagen");
+        añadirImagen.setName("añadirImagen"); // NOI18N
+        añadirImagen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                añadirImagenActionPerformed(evt);
             }
         });
 
@@ -250,7 +252,7 @@ public class InterfazGUI extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(dominio, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))))
+                        .addComponent(añadirImagen))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -276,17 +278,17 @@ public class InterfazGUI extends javax.swing.JFrame {
                     .addComponent(reino, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dominio, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clase, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(añadirImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton6.setText("Agregar Especie");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        agregarEspecie.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        agregarEspecie.setText("Agregar Especie");
+        agregarEspecie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                agregarEspecieActionPerformed(evt);
             }
         });
 
@@ -302,14 +304,14 @@ public class InterfazGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(agregarEspecie)
                 .addGap(50, 50, 50))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(215, Short.MAX_VALUE)
-                .addComponent(jButton6)
+                .addComponent(agregarEspecie)
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -354,42 +356,42 @@ public class InterfazGUI extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Informe Uno");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        InformeUno.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        InformeUno.setText("Informe Uno");
+        InformeUno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                InformeUnoActionPerformed(evt);
             }
         });
 
-        jTextField1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        InformeUnoText.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        InformeTres.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        InformeTres.setName("InformeTres"); // NOI18N
-        InformeTres.addActionListener(new java.awt.event.ActionListener() {
+        InformeTresText.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        InformeTresText.setName("InformeTresText"); // NOI18N
+        InformeTresText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InformeTresActionPerformed(evt);
+                InformeTresTextActionPerformed(evt);
             }
         });
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton5.setText("Informe Tres");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        informeTres.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        informeTres.setText("Informe Tres");
+        informeTres.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                informeTresActionPerformed(evt);
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton4.setText("Informe Dos");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        informeDos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        informeDos.setText("Informe Dos");
+        informeDos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                informeDosActionPerformed(evt);
             }
         });
 
-        InformeImg.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        InformeImg.setName("InformeImg"); // NOI18N
+        InformeDosText.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        InformeDosText.setName("InformeDosText"); // NOI18N
 
         label12.setAlignment(java.awt.Label.CENTER);
         label12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -415,21 +417,21 @@ public class InterfazGUI extends javax.swing.JFrame {
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(46, 46, 46)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(InformeUnoText, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(88, 88, 88)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(InformeUno, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(InformeImg, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(InformeDosText, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(InformeTres, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(InformeTresText, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
-                                .addComponent(jButton4)
+                                .addComponent(informeDos)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(informeTres, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(34, 34, 34))))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
@@ -451,15 +453,15 @@ public class InterfazGUI extends javax.swing.JFrame {
                     .addComponent(label14, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(InformeImg, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(InformeDosText, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(InformeTres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(InformeUnoText, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(InformeTresText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
+                    .addComponent(informeTres)
+                    .addComponent(informeDos)
+                    .addComponent(InformeUno))
                 .addGap(25, 25, 25))
         );
 
@@ -481,7 +483,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -528,7 +530,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_claseActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void añadirImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirImagenActionPerformed
         this.file.removeAll();                              
         try{
          JFileChooser file=new JFileChooser();
@@ -563,11 +565,11 @@ public class InterfazGUI extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "La imagen fue guardada con exito");
                    
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_añadirImagenActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void InformeUnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeUnoActionPerformed
         // TODO add your handling code here:
-        String a = jTextField1.getText();
+        String a = InformeUnoText.getText();
         if (a.equals("") || a == null) {
             JOptionPane.showMessageDialog(null, "Le falta rellenar la especie", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
         }
@@ -575,12 +577,12 @@ public class InterfazGUI extends javax.swing.JFrame {
             this.controlador.generarInforme(1, a);
         }
         
-        jTextField1.setText("");
-    }//GEN-LAST:event_jButton3ActionPerformed
+        InformeUnoText.setText("");
+    }//GEN-LAST:event_InformeUnoActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void informeDosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informeDosActionPerformed
         // TODO add your handling code here:
-        String a = this.InformeImg.getText();
+        String a = this.InformeDosText.getText();
         if (a.equals("") || a == null) {
             JOptionPane.showMessageDialog(null, "Le falta rellenar el texto", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
         }
@@ -588,12 +590,12 @@ public class InterfazGUI extends javax.swing.JFrame {
             this.controlador.generarInforme(2, a);
         }
         
-        this.InformeImg.setText("");
-    }//GEN-LAST:event_jButton4ActionPerformed
+        this.InformeDosText.setText("");
+    }//GEN-LAST:event_informeDosActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void informeTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informeTresActionPerformed
         // TODO add your handling code here:
-        String a = this.InformeTres.getText();
+        String a = this.InformeTresText.getText();
         if (a.equals("") || a == null) {
             JOptionPane.showMessageDialog(null, "Le falta rellenar el texto", "Mensaje de advertencia", JOptionPane.WARNING_MESSAGE);
         }
@@ -601,14 +603,14 @@ public class InterfazGUI extends javax.swing.JFrame {
             this.controlador.generarInforme(3, a);
         }
 
-        this.InformeTres.setText("");
-    }//GEN-LAST:event_jButton5ActionPerformed
+        this.InformeTresText.setText("");
+    }//GEN-LAST:event_informeTresActionPerformed
 
-    private void InformeTresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeTresActionPerformed
+    private void InformeTresTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InformeTresTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_InformeTresActionPerformed
+    }//GEN-LAST:event_InformeTresTextActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void agregarEspecieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarEspecieActionPerformed
         // TODO add your handling code here:
         //this.imagen() falta este ctm
         String[] lista = new String[8];
@@ -641,7 +643,7 @@ public class InterfazGUI extends javax.swing.JFrame {
         this.genero.setText("");
         this.especie.setText("");
         this.file.removeAll();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_agregarEspecieActionPerformed
 
     /**
      * @param args the command line arguments
@@ -649,24 +651,24 @@ public class InterfazGUI extends javax.swing.JFrame {
 
     private JFileChooser file=new JFileChooser();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField InformeImg;
-    private javax.swing.JTextField InformeTres;
+    private javax.swing.JTextField InformeDosText;
+    private javax.swing.JTextField InformeTresText;
+    private javax.swing.JButton InformeUno;
+    private javax.swing.JTextField InformeUnoText;
+    private javax.swing.JButton agregarEspecie;
+    private javax.swing.JButton añadirImagen;
     private javax.swing.JTextField clase;
     private javax.swing.JTextField dominio;
     private javax.swing.JTextField especie;
     private javax.swing.JTextField familia;
     private javax.swing.JTextField genero;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton informeDos;
+    private javax.swing.JButton informeTres;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField jTextField1;
     private java.awt.Label label1;
     private java.awt.Label label10;
     private java.awt.Label label11;
