@@ -7,16 +7,20 @@ import java.util.*;
 public class Libre extends Estado {
 
     /**
-     * Default constructor
-     */
-    public Libre() {
-    }
-
-    /**
+     * Constructor de estado libre
      * 
      */
-    public void manejar() {
-        // TODO implement here
+    public Libre() {
+        this.estado = false;
+    }
+    
+    /**
+     * Metodo para obtener el estado de un objeto.
+     * @return False si esta libre.
+     */
+    @Override
+    public boolean manejar() {
+        return this.estado;
     }
 
 }

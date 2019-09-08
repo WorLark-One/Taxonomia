@@ -61,10 +61,7 @@ public class InformeDos extends Informe {
             Logger.getLogger(InformeDos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DocumentException ex) {
             Logger.getLogger(InformeDos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-            
-        
-
+        }              
         
         
     }

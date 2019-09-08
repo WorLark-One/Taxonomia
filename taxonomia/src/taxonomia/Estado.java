@@ -6,19 +6,11 @@ import java.util.*;
  */
 public abstract class Estado {
     
-    private int estado;
-    /**
-     * Default constructor
-     */
-    public Estado() {
-    }
-
+    protected boolean estado;
 
     /**
-     * 
+     * Metodo abstracto que retorna el estado.
      */
-    public void manejar() {
-        // TODO implement here
-    }
+    public abstract boolean manejar();
 
 }

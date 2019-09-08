@@ -12,6 +12,7 @@ public class Adaptador implements IAdaptador {
     private InformeTexto infTexto;
     private InformeDos infImagen;
     private InformeTres infTres;
+    private Estado estado;
     
     
     private Compuesto raiz;
@@ -33,6 +34,7 @@ public class Adaptador implements IAdaptador {
      * Default constructor
      */
     public Adaptador() {
+        this.estado = new Libre();
        
     }
     /**
@@ -54,23 +56,30 @@ public class Adaptador implements IAdaptador {
     }
     
     public void guardarDatos(Compuesto dominio){
-        this.raiz= dominio;
-        this.Dominio = this.raiz.nombre;
-        Compuesto c1 = (Compuesto) this.raiz.getListaSubTaxones().get(0);
-        this.Reino =  c1.getNombre();
-        Compuesto c2 = (Compuesto) c1.getListaSubTaxones().get(0);
-        this.Phylum = c2.getNombre();
-        Compuesto c3 = (Compuesto) c2.getListaSubTaxones().get(0);
-        this.Clase = c3.getNombre();
-        Compuesto c4 = (Compuesto) c3.getListaSubTaxones().get(0);
-        this.Orden = c4.getNombre();
-        Compuesto c5 = (Compuesto) c4.getListaSubTaxones().get(0);
-        this.Familia = c5.getNombre();
-        Compuesto c6 = (Compuesto) c5.getListaSubTaxones().get(0);
-        this.Genero = c6.getNombre();
-        Especie c7 = (Especie) c6.getListaSubTaxones().get(0);
-        this.Especie = c7.getNombre();
-        this.imagen = c7.getImagen();
+        if(!this.estado.manejar()){
+            this.estado = new Ocupado();
+            this.raiz= dominio;
+            this.Dominio = this.raiz.nombre;
+            Compuesto c1 = (Compuesto) this.raiz.getListaSubTaxones().get(0);
+            this.Reino =  c1.getNombre();
+            Compuesto c2 = (Compuesto) c1.getListaSubTaxones().get(0);
+            this.Phylum = c2.getNombre();
+            Compuesto c3 = (Compuesto) c2.getListaSubTaxones().get(0);
+            this.Clase = c3.getNombre();
+            Compuesto c4 = (Compuesto) c3.getListaSubTaxones().get(0);
+            this.Orden = c4.getNombre();
+            Compuesto c5 = (Compuesto) c4.getListaSubTaxones().get(0);
+            this.Familia = c5.getNombre();
+            Compuesto c6 = (Compuesto) c5.getListaSubTaxones().get(0);
+            this.Genero = c6.getNombre();
+            Especie c7 = (Especie) c6.getListaSubTaxones().get(0);
+            this.Especie = c7.getNombre();
+            this.imagen = c7.getImagen();   
+            this.estado = new Libre();
+        }
+        else{
+            //se esta utilizando la base de datos, intente despues
+        }
     }
     
     public void imprimir(){
@@ -90,48 +99,63 @@ public class Adaptador implements IAdaptador {
     @Override
     public void generarInforme1(String s) {
         //s = especie del primer infome 
-        System.out.println("especie: "+s);
-        this.CBD = new ConectarBaseDeDatos();
-        try {
-            this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s),s);
-            this.infTexto.generarInforme();
-        } catch (SQLException ex) {
-            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        if(!this.estado.manejar()){
+            this.estado = new Ocupado();
+            System.out.println("especie: "+s);
+            this.CBD = new ConectarBaseDeDatos();
+            try {
+                this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s),s);
+                this.infTexto.generarInforme();
+            } catch (SQLException ex) {
+                Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.estado = new Libre();
         }
     }
 
     @Override
     public void generarInforme2(String s) {
-        System.out.println("Texto: "+s);
-        this.CBD = new ConectarBaseDeDatos();
-        try {
-            this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
-        } catch (SQLException ex) {
-            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        if(!this.estado.manejar()){
+            this.estado = new Ocupado();
+            System.out.println("Texto: "+s);
+            this.CBD = new ConectarBaseDeDatos();
+            try {
+                this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
+            } catch (SQLException ex) {
+                Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.infImagen.generarInforme();
+            this.estado = new Libre();
         }
-        this.infImagen.generarInforme();
     }
 
     @Override
     public void generarInforme3(String s) {
-        System.out.println("Texto: "+s);
-        this.CBD = new ConectarBaseDeDatos();
-        try {
-            this.infTres = new InformeTres(this.CBD.consultaSQL3(s),s);
-            this.infTres.generarInforme();
-        } catch (SQLException ex) {
-            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        if(!this.estado.manejar()){
+            this.estado = new Ocupado();
+            System.out.println("Texto: "+s);
+            this.CBD = new ConectarBaseDeDatos();
+            try {
+                this.infTres = new InformeTres(this.CBD.consultaSQL3(s),s);
+                this.infTres.generarInforme();
+            } catch (SQLException ex) {
+                Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            this.estado = new Libre();
         }
-        
     }
 
 
     @Override
     public void insertarHaciaBD() {
-        this.CBD = new ConectarBaseDeDatos();
-        String a = String.valueOf(this.ID);
-        this.CBD.agregarPersona(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio);
-        this.ID ++;
+        if(!this.estado.manejar()){
+            this.estado = new Ocupado();
+            this.CBD = new ConectarBaseDeDatos();
+            String a = String.valueOf(this.ID);
+            this.CBD.agregarPersona(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio);
+            this.ID ++;
+            this.estado = new Libre();
+        }
     }
     
 }

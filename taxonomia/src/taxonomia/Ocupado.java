@@ -7,16 +7,19 @@ import java.util.*;
 public class Ocupado extends Estado {
 
     /**
-     * Default constructor
+     * Constructor de estado ocupado
      */
     public Ocupado() {
+        this.estado = true;
     }
 
     /**
-     * 
+     * Metodo para obtener el estado de un objeto.
+     * @return True si esta ocupado.
      */
-    public void manejar() {
-        // TODO implement here
+    @Override
+    public boolean manejar() {
+        return this.estado;        
     }
 
 }
