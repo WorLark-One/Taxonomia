@@ -38,6 +38,7 @@ public class Controlador {
     /**
      * Metodo que se encarga de redireccionar al Adaptador el informe que se desea generar
      * @param opcion
+     * @param s
      */
     public void generarInforme(int opcion,String s) {
         // TODO implement here

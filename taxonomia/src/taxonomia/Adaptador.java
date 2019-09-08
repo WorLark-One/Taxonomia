@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public class Adaptador implements IAdaptador {
     private InformeTexto infTexto;
-    private InformeImagen infImagen;
+    private InformeDos infImagen;
     private InformeTres infTres;
     
     
@@ -93,7 +93,7 @@ public class Adaptador implements IAdaptador {
         System.out.println("especie: "+s);
         this.CBD = new ConectarBaseDeDatos();
         try {
-            this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s));
+            this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s),s);
             this.infTexto.generarInforme();
         } catch (SQLException ex) {
             Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
@@ -101,9 +101,14 @@ public class Adaptador implements IAdaptador {
     }
 
     @Override
-    public void generarInforme2(File i) {
-        //System.out.println("Texto: "+s);
-        this.infImagen = new InformeImagen(i);
+    public void generarInforme2(String s) {
+        System.out.println("Texto: "+s);
+        this.CBD = new ConectarBaseDeDatos();
+        try {
+            this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
+        } catch (SQLException ex) {
+            Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.infImagen.generarInforme();
     }
 
@@ -112,7 +117,7 @@ public class Adaptador implements IAdaptador {
         System.out.println("Texto: "+s);
         this.CBD = new ConectarBaseDeDatos();
         try {
-            this.infTres = new InformeTres(this.CBD.consultaSQL3(s));
+            this.infTres = new InformeTres(this.CBD.consultaSQL3(s),s);
             this.infTres.generarInforme();
         } catch (SQLException ex) {
             Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
