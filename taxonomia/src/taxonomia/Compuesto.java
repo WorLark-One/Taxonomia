@@ -16,13 +16,6 @@ public class Compuesto extends Componente {
         super(nombre,tipoTaxon);
         this.listaSubTaxones = new ArrayList();
     }
-    
-    /**
-     * 
-     */
-    public void Operation() {
-        //No se que tiene que hacer aqui pero lo dejo por si acaso
-    }
 
     /**Metodo que agrega un taxon a la lista de subtaxones.
      * @param subTaxon Taxon a agregar a la lista.
