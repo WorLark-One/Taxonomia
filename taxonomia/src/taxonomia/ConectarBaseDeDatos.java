@@ -1,4 +1,5 @@
 /*
+
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -18,7 +19,7 @@ import java.util.Arrays;
  */
 public class ConectarBaseDeDatos {
 
-    private Connection conexion = null;
+    private Connection conexion;
 
     public Connection getConexion() {
         return conexion;
@@ -33,20 +34,20 @@ public class ConectarBaseDeDatos {
      * @return true si se realiza la conexion, false de lo contrario
      */
     public boolean crearConexion(String nombreBD, String contraseña) {
-       
+
         String url = "jdbc:postgresql://localhost:5432/" + nombreBD + "";// la url incluye el puerto y nombre del proyecto
         String password = "" + contraseña + "";// contraseña de postgres
         String usuario = "postgres";
         try {
             Class.forName("org.postgresql.Driver");
 
-            conexion = DriverManager.getConnection(url,usuario,password);
-            
+            conexion = DriverManager.getConnection(url, usuario, password);
+
             if (conexion != null) {
                 System.out.println("Conexion exitosa!!");
                 return true;
             }
-            
+
         } catch (SQLException ex) {
             System.out.println("error en conexion: " + ex);
         } catch (ClassNotFoundException ex) {
@@ -70,24 +71,24 @@ public class ConectarBaseDeDatos {
      * @param imagen
      */
     public void agregarEspecie(String datoID, String datoEspecie, String datoGenero, String datoFamilia,
-            String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio,byte[] imagen) {
+            String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio, String imagen) {
         if (conexion != null) {
             try {
                 try (java.sql.Statement st = conexion.createStatement()) {
-                    if(imagen!= null)
-                    {
+                    if (imagen != null) {
                         String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
-                            + "dominio,imagen) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
-                            + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "','" + "{"+imagen+"}" + "')";
-                            st.executeUpdate(sql);
-                    }else{
-                    String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
-                            + "dominio) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
-                            + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "')";
-                            st.executeUpdate(sql);
-                        
+                                + "dominio,rutaImagen) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
+                                + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "','" + imagen + "')";
+                        st.executeUpdate(sql);
+
+                    } else {
+                        String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
+                                + "dominio) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
+                                + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "')";
+                        st.executeUpdate(sql);
+
                     }
-                    
+
                 }
 
             } catch (SQLException e) {
@@ -101,18 +102,21 @@ public class ConectarBaseDeDatos {
      *
      * @throws SQLException
      */
+    /*
     public void cerrarBaseDeDatos() throws SQLException {
         if (conexion != null) {
             conexion.close();
 
         }
-    }
+    }*/
     /**
-     * consulta simple sobre los datos almacenados en la base de datos,
-     * luego hay que modificarla para los datos que los informes requieran
-     * @throws SQLException 
+     * consulta simple sobre los datos almacenados en la base de datos, luego
+     * hay que modificarla para los datos que los informes requieran
+     *
+     * @throws SQLException
      */
     public void consultaSQL() throws SQLException {
+
         if (conexion != null)// si hay conexion
         {
             try {
@@ -131,92 +135,92 @@ public class ConectarBaseDeDatos {
                     String dominio = resultado.getString("dominio");
                     // se obtuvieron todos los datos, falta que quieren que retorne los datos.
                     //String reino = resultado.getString("apellido");// para capturar la imagen
-                    
+
                 }
                 resultado.close();
                 st.close();
                 //conexion.close();
             } catch (SQLException e) {
-                System.out.println("ERROR DE CONEXION");
+                System.out.println("ERROR DE CONEXION base");
             }
         }
 
     }
-    
+
     /**
      * consulta simple sobre los datos almacenados relacionados con una especie
+     *
      * @param s La especie relacionada
+     * @param conexion
      * @return ArrayList con las relaciones
-     * @throws SQLException 
+     * @throws SQLException
      */
-    public ArrayList<String[]> consultaSQL1(String s) throws SQLException {
+    public ArrayList<String[]> consultaSQL1(String s, Connection conexion) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
-        String[] cadena ;
-
-        if (conexion != null)// si hay conexion
-        {
+        String[] cadena;
+        if (conexion != null) {
             try {
-                java.sql.Statement st = conexion.createStatement();
-                String sql = "select genero,familia,orden,clase,filo_division,reino,dominio from Categoria where especie = "+s;
-                ResultSet resultado = st.executeQuery(sql);
-                while (resultado.next()) {
-                    cadena =  new String[7];
-                    int i =0;
-                    String genero = resultado.getString("genero");
-                    cadena[i] = genero;
-                    i++;
-                    String familia = resultado.getString("familia");
-                    cadena[i] = familia;
-                    i++;
-                    String orden = resultado.getString("orden");
-                    cadena[i] = orden;
-                    i++;
-                    String clase = resultado.getString("clase");
-                    cadena[i] = clase;
-                    i++;
-                    String filo_division = resultado.getString("filo_division");
-                    cadena[i] = filo_division;
-                    i++;
-                    String reino = resultado.getString("reino");
-                    cadena[i] = reino;
-                    i++;
-                    String dominio = resultado.getString("dominio");
-                    cadena[i] = dominio;
-                    consulta.add(cadena);
-                    // se obtuvieron todos los datos, falta que quieren que retorne los datos.
-                    //String reino = resultado.getString("apellido");// para capturar la imagen
-                    
-                }
-                resultado.close();
-                st.close();
-                //conexion.close();
-            } catch (SQLException e) {
-                System.out.println("ERROR DE CONEXION");
-            }
-        }
-        return consulta;
+                try (java.sql.Statement st = conexion.createStatement()) {
 
-    }
-    
-    
-    /**
-     * consulta simple sobre los datos almacenados relacionados con una familia
-     * @param s La familia relacionada
-     * @return ArrayList con las relaciones
-     * @throws SQLException 
-     */
+                    String sql = "select genero,familia,orden,clase,filo_division,reino,dominio from Categoria where especie = 'camila'";
+                    ResultSet resultado = st.executeQuery(sql);
+                    while (resultado.next()) {
+                        cadena = new String[7];
+                        int i = 0;
+                        String genero = resultado.getString("genero");
+                        cadena[i] = genero;
+                        i++;
+                        String familia = resultado.getString("familia");
+                        cadena[i] = familia;
+                        i++;
+                        String orden = resultado.getString("orden");
+                        cadena[i] = orden;
+                        i++;
+                        String clase = resultado.getString("clase");
+                        cadena[i] = clase;
+                        i++;
+                        String filo_division = resultado.getString("filo_division");
+                        cadena[i] = filo_division;
+                        i++;
+                        String reino = resultado.getString("reino");
+                        cadena[i] = reino;
+                        i++;
+                        String dominio = resultado.getString("dominio");
+                        cadena[i] = dominio;
+                        consulta.add(cadena);
+
+                    }
+
+                }
+            } catch (SQLException e) {
+                    System.out.println("ERROR DE CONEXION" + e);
+                }
+            }
+
+          
+        return null;
+        }
+        /**
+         * consulta simple sobre los datos almacenados relacionados con una
+         * familia
+         *
+         * @param s La familia relacionada
+         * @return ArrayList con las relaciones
+         * @throws SQLException
+         */
     public ArrayList<String[]> consultaSQL2(String s) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
-        String[] cadena ;
+        String[] cadena;
+        //his.CBD.crearConexion("Taxionomia","1");
         if (conexion != null)// si hay conexion
         {
             try {
                 java.sql.Statement st = conexion.createStatement();
-                String sql = "select especie,genero,reino,orden,clase,filo_division,dominio from Categoria where familia = "+s;
+                String sql = "select especie,genero,reino,orden,clase,filo_division,dominio from Categoria where familia = " + "'" + s + "'";
                 ResultSet resultado = st.executeQuery(sql);
                 while (resultado.next()) {
-                    cadena =  new String[7];
-                    int i =0;
+                    cadena = new String[7];
+                    int i = 0;
                     String especie = resultado.getString("especie");
                     cadena[i] = especie;
                     i++;
@@ -240,38 +244,38 @@ public class ConectarBaseDeDatos {
                     consulta.add(cadena);
                     // se obtuvieron todos los datos, falta que quieren que retorne los datos.
                     //String reino = resultado.getString("apellido");// para capturar la imagen
-                    
+
                 }
                 resultado.close();
                 st.close();
                 //conexion.close();
             } catch (SQLException e) {
-                System.out.println("ERROR DE CONEXION");
+                System.out.println("ERROR DE consulta 2");
             }
         }
         return consulta;
 
     }
-    
 
     /**
      * consulta simple sobre los datos almacenados relacionados con un reino
+     *
      * @param s el reino relacionado
      * @return ArrayList con las relaciones
-     * @throws SQLException 
+     * @throws SQLException
      */
     public ArrayList<String[]> consultaSQL3(String s) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
-        String[] cadena ;
+        String[] cadena;
         if (conexion != null)// si hay conexion
         {
             try {
                 java.sql.Statement st = conexion.createStatement();
-                String sql = "select especie,genero,familia,orden,clase,filo_division,dominio from Categoria where reino = "+s;
+                String sql = "select especie,genero,familia,orden,clase,filo_division,dominio from Categoria where reino = " + "'" + s + "'";
                 ResultSet resultado = st.executeQuery(sql);
                 while (resultado.next()) {
-                    cadena =  new String[7];
-                    int i =0;
+                    cadena = new String[7];
+                    int i = 0;
                     String especie = resultado.getString("especie");
                     cadena[i] = especie;
                     i++;
@@ -295,13 +299,13 @@ public class ConectarBaseDeDatos {
                     consulta.add(cadena);
                     // se obtuvieron todos los datos, falta que quieren que retorne los datos.
                     //String reino = resultado.getString("apellido");// para capturar la imagen
-                    
+
                 }
                 resultado.close();
                 st.close();
                 //conexion.close();
             } catch (SQLException e) {
-                System.out.println("ERROR DE CONEXION");
+                System.out.println("ERROR DE consulta 3");
             }
         }
         return consulta;

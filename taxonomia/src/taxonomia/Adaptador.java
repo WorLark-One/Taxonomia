@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +39,9 @@ public class Adaptador implements IAdaptador {
      * Constructor de adaptador
      */
     public Adaptador() {
-        this.estado = new Libre();
+        this.CBD = new ConectarBaseDeDatos();
+            
+        
        
     }
     
@@ -116,18 +119,26 @@ public class Adaptador implements IAdaptador {
     @Override
     public void generarInforme1(String s) {
         //s = especie del primer infome 
-        if(!this.estado.manejar()){
+        
+        //if(!this.estado.manejar()){
             this.estado = new Ocupado();
             System.out.println("especie: "+s);
             this.CBD = new ConectarBaseDeDatos();
+            this.CBD.crearConexion("Taxionomia","1");
+            Connection coneccion = this.CBD.getConexion();
             try {
-                this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s),s);
+                System.out.println("hola----");
+                this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s,coneccion),s);
+                this.infTexto.setConsulta(this.CBD.consultaSQL1(s,coneccion));
+                System.out.println("hola mundo"+this.infTexto.getConsulta().size());
                 this.infTexto.generarInforme();
+                
+                System.out.println(this.CBD.consultaSQL1(s,coneccion).size());
             } catch (SQLException ex) {
                 Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.estado = new Libre();
-        }
+        //}
     }
 
     /**
@@ -139,7 +150,8 @@ public class Adaptador implements IAdaptador {
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
             System.out.println("Texto: "+s);
-            this.CBD = new ConectarBaseDeDatos();
+           this.CBD = new ConectarBaseDeDatos();
+           this.CBD.crearConexion("Taxionomia","1");
             try {
                 this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
             } catch (SQLException ex) {
@@ -160,6 +172,7 @@ public class Adaptador implements IAdaptador {
             this.estado = new Ocupado();
             System.out.println("Texto: "+s);
             this.CBD = new ConectarBaseDeDatos();
+            this.CBD.crearConexion("Taxionomia","1");
             try {
                 this.infTres = new InformeTres(this.CBD.consultaSQL3(s),s);
                 this.infTres.generarInforme();
@@ -178,9 +191,8 @@ public class Adaptador implements IAdaptador {
     public void insertarHaciaBD() {
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
-            this.CBD = new ConectarBaseDeDatos();
-            
             this.CBD.crearConexion("Taxionomia","1");
+            this.estado = new Libre();
             
             String a = String.valueOf(this.ID);
             
@@ -188,6 +200,7 @@ public class Adaptador implements IAdaptador {
                 this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio,this.convertirFile());
                 this.ID ++;
                 this.estado = new Libre();
+                //this.CBD.cerrarBaseDeDatos();
             } catch (IOException ex) {
                 Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -204,5 +217,17 @@ public class Adaptador implements IAdaptador {
         //System.out.println("hola");
         return null;
     }
+
+    public ConectarBaseDeDatos getCBD() {
+        return CBD;
+    }
+
+    public void setCBD(ConectarBaseDeDatos CBD) {
+        this.CBD = CBD;
+    }
+    
+    
+    
+    
     
 }

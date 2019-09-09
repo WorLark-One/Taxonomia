@@ -26,8 +26,9 @@ public class InformeTexto extends Informe {
      */
     public InformeTexto(ArrayList<String[]> consulta,String s) {    
         documento = new Document();
-        this.consulta = consulta;
+        this.consulta =  new ArrayList<>();
         this.s=s;
+        
         
     }
 
@@ -42,15 +43,16 @@ public class InformeTexto extends Informe {
             
         try {
             Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-            ficheroPdf = new FileOutputStream("informeUno"+hourdateFormat.format(date)+".pdf");
+            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy");
+            ficheroPdf = new FileOutputStream("informeUno.pdf");
             PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
 
             // Se abre el documento.
             documento.open();
-            documento.add(new Paragraph("INFOME UNO FAMILIA: "+s));    
+            documento.add(new Paragraph("INFOME UNO ESPECIE: "+s));    
             documento.add(new Paragraph("Genero - Familia - Orden - Clase - Phylo/Division - Reino - Dominio"));
             //this.documento.add((Element) this.img);
+            //System.out.println(consulta.size());
             for (int i = 0; i < this.consulta.size(); i++) {
                 documento.add(new Paragraph(this.consulta.get(i)[0]+" - "+this.consulta.get(i)[1]+" - "+this.consulta.get(i)[2]+" - "+this.consulta.get(i)[3]+" - "+this.consulta.get(i)[4]+" - "+this.consulta.get(i)[5]+" - "+this.consulta.get(i)[6]));
             }
@@ -61,6 +63,14 @@ public class InformeTexto extends Informe {
             Logger.getLogger(InformeTexto.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+
+    public ArrayList<String[]> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList<String[]> consulta) {
+        this.consulta = consulta;
     }
 
 
