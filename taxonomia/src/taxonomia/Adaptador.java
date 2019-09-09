@@ -12,7 +12,8 @@ public class Adaptador implements IAdaptador {
     private InformeTexto infTexto;
     private InformeDos infImagen;
     private InformeTres infTres;
-    
+ 
+    private Estado estado;
     
     private Compuesto raiz;
     
