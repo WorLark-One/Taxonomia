@@ -1,6 +1,7 @@
 package taxonomia;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ public class InformeTres extends Informe {
         // TODO implement here
         
         documento = new Document();
+        this.consulta=new ArrayList<>();
         this.consulta = consulta;
         this.s=s;
     }
@@ -37,10 +39,12 @@ public class InformeTres extends Informe {
         FileOutputStream ficheroPdf;
         try {
             Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-            ficheroPdf = new FileOutputStream("informeTres"+hourdateFormat.format(date)+".pdf");
-             documento.open();
-            documento.add(new Paragraph("INFOME TRES REINO: "+s));    
+            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy");
+            ficheroPdf = new FileOutputStream("informe de reinos.pdf");
+            PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
+            
+            documento.open();
+            documento.add(new Paragraph("INFORME TRES REINO: "+s));    
             documento.add(new Paragraph("Especie  -  Genero  -  Familia  -  Orden  -  Clase  -  Phylo/Division  -  Dominio "));
             //this.documento.add((Element) this.img);
             for (int i = 0; i < this.consulta.size(); i++) {
@@ -51,5 +55,31 @@ public class InformeTres extends Informe {
             e.printStackTrace();
         }
     }
+
+    public ArrayList<String[]> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList<String[]> consulta) {
+        this.consulta = consulta;
+    }
+
+    public Document getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(Document documento) {
+        this.documento = documento;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+    
+    
 
 }

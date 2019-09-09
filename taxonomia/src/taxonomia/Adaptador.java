@@ -70,7 +70,7 @@ public class Adaptador implements IAdaptador {
      * @param dominio arbol generado, con los datos ingresados
      */
     public void guardarDatos(Compuesto dominio){
-        if(!this.estado.manejar()){
+        //if(!this.estado.manejar()){
             this.estado = new Ocupado();
             this.raiz= dominio;
             this.Dominio = this.raiz.nombre;
@@ -90,10 +90,10 @@ public class Adaptador implements IAdaptador {
             this.Especie = c7.getNombre();
             this.imagen = c7.getImagen();   
             this.estado = new Libre();
-        }
-        else{
+        //}
+        //else{
             //se esta utilizando la base de datos, intente despues
-        }
+        //}
     }
     
     /**
@@ -124,16 +124,16 @@ public class Adaptador implements IAdaptador {
             this.estado = new Ocupado();
             System.out.println("especie: "+s);
             this.CBD = new ConectarBaseDeDatos();
-            this.CBD.crearConexion("Taxionomia","1");
+            this.CBD.crearConexion("Taxonomia","1");
             Connection coneccion = this.CBD.getConexion();
             try {
                 System.out.println("hola----");
                 this.infTexto = new InformeTexto(this.CBD.consultaSQL1(s,coneccion),s);
-                this.infTexto.setConsulta(this.CBD.consultaSQL1(s,coneccion));
-                System.out.println("hola mundo"+this.infTexto.getConsulta().size());
+                //this.infTexto.setConsulta(this.CBD.consultaSQL1(s,coneccion));
+                //System.out.println("hola mundo"+this.infTexto.getConsulta().size());
                 this.infTexto.generarInforme();
                 
-                System.out.println(this.CBD.consultaSQL1(s,coneccion).size());
+                //System.out.println(this.CBD.consultaSQL1(s,coneccion).size());
             } catch (SQLException ex) {
                 Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -147,19 +147,26 @@ public class Adaptador implements IAdaptador {
      */
     @Override
     public void generarInforme2(String s) {
-        if(!this.estado.manejar()){
+        //if(!this.estado.manejar()){
             this.estado = new Ocupado();
-            System.out.println("Texto: "+s);
-           this.CBD = new ConectarBaseDeDatos();
-           this.CBD.crearConexion("Taxionomia","1");
+            System.out.println("especie: "+s);
+            this.CBD = new ConectarBaseDeDatos();
+            this.CBD.crearConexion("Taxonomia","1");
+            Connection coneccion = this.CBD.getConexion();
             try {
-                this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
+                System.out.println("hola----");
+                this.infImagen = new InformeDos(this.CBD.consultaSQL2(s,coneccion),s);
+                //this.infImagen.setConsulta(this.CBD.consultaSQL2(s,coneccion));
+                //System.out.println("hola mundo"+this.infTexto.getConsulta().size());
+                this.infImagen.generarInforme();
+                
+                //System.out.println(this.CBD.consultaSQL1(s,coneccion).size());
+                //this.infImagen = new InformeDos(this.CBD.consultaSQL2(s),s);
             } catch (SQLException ex) {
                 Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.infImagen.generarInforme();
             this.estado = new Libre();
-        }
+        //}
     }
 
     /**
@@ -168,19 +175,25 @@ public class Adaptador implements IAdaptador {
      */
     @Override
     public void generarInforme3(String s) {
-        if(!this.estado.manejar()){
+        //if(!this.estado.manejar()){
             this.estado = new Ocupado();
-            System.out.println("Texto: "+s);
+            System.out.println("especie: "+s);
             this.CBD = new ConectarBaseDeDatos();
-            this.CBD.crearConexion("Taxionomia","1");
+            this.CBD.crearConexion("Taxonomia","1");
+            Connection coneccion = this.CBD.getConexion();
             try {
-                this.infTres = new InformeTres(this.CBD.consultaSQL3(s),s);
+                System.out.println("hola----");
+                
+                
+                this.infTres = new InformeTres(this.CBD.consultaSQL3(s,coneccion),s);
+                //this.infTexto.setConsulta(this.CBD.consultaSQL3(s,coneccion));
+                
                 this.infTres.generarInforme();
             } catch (SQLException ex) {
                 Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
             }
             this.estado = new Libre();
-        }
+        //}
     }
 
 
@@ -191,7 +204,7 @@ public class Adaptador implements IAdaptador {
     public void insertarHaciaBD() {
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
-            this.CBD.crearConexion("Taxionomia","1");
+            this.CBD.crearConexion("Taxonomia","1");
             this.estado = new Libre();
             
             String a = String.valueOf(this.ID);

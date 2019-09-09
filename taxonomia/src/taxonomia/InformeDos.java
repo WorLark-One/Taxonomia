@@ -1,69 +1,85 @@
 package taxonomia;
-
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.*;
 
 /**
  * 
  */
 public class InformeDos extends Informe {
-    private Document documento ;
     private ArrayList<String[]> consulta;
+    private Document documento ;
     private String s ;
     
+    
     /**
-     * Constructor de la clase InformeDos
+     * Constructor de la clase InformeTres
      * @param consulta ArrayList con el conjunto de datos para agregar en el pdf
      * @param s String que corresponde a lo que se consultó
      */
     public InformeDos(ArrayList<String[]> consulta,String s) {
+        // TODO implement here
+        
         documento = new Document();
+        this.consulta=new ArrayList<>();
         this.consulta = consulta;
         this.s=s;
     }
 
     /**
-     * Metodo que degener el informe 2 en pdf
+     * Metodo que degener el informe 3 en pdf
      */
     @Override
     public void generarInforme() {
         // TODO implement here
-        // Se crea el OutputStream para el fichero donde queremos dejar el pdf.
         FileOutputStream ficheroPdf;
-        
-            
         try {
             Date date = new Date();
-            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy");
-            ficheroPdf = new FileOutputStream("informeDos"+hourdateFormat.format(date)+".pdf");
+            DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy");
+            ficheroPdf = new FileOutputStream("informe de familia.pdf");
             PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
-
-            // Se abre el documento.
+            
             documento.open();
-            documento.add(new Paragraph("INFOME DOS FAMILIA: "+s));    
+            documento.add(new Paragraph("INFORME DOS FAMILIA: "+s));
             documento.add(new Paragraph("Especie  -  Genero  -  Reino  -  Orden  -  Clase  -  Phylo/Division  -  Dominio "));
             //this.documento.add((Element) this.img);
             for (int i = 0; i < this.consulta.size(); i++) {
                 documento.add(new Paragraph(this.consulta.get(i)[0]+" - "+this.consulta.get(i)[1]+" - "+this.consulta.get(i)[2]+" - "+this.consulta.get(i)[3]+" - "+this.consulta.get(i)[4]+" - "+this.consulta.get(i)[5]+" - "+this.consulta.get(i)[6]));
             }
             documento.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(InformeDos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DocumentException ex) {
-            Logger.getLogger(InformeDos.class.getName()).log(Level.SEVERE, null, ex);
-        }              
-        
-        
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
+    public ArrayList<String[]> getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(ArrayList<String[]> consulta) {
+        this.consulta = consulta;
+    }
+
+    public Document getDocumento() {
+        return documento;
+    }
+
+    public void setDocumento(Document documento) {
+        this.documento = documento;
+    }
+
+    public String getS() {
+        return s;
+    }
+
+    public void setS(String s) {
+        this.s = s;
+    }
+    
+    
 
 }

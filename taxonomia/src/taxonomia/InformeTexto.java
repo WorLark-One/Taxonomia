@@ -27,6 +27,7 @@ public class InformeTexto extends Informe {
     public InformeTexto(ArrayList<String[]> consulta,String s) {    
         documento = new Document();
         this.consulta =  new ArrayList<>();
+        this.consulta=consulta;
         this.s=s;
         
         
@@ -38,18 +39,16 @@ public class InformeTexto extends Informe {
     @Override
     public void generarInforme() {
         // TODO implement here
-        FileOutputStream ficheroPdf;
-        
-            
+        FileOutputStream ficheroPdf; 
         try {
             Date date = new Date();
             DateFormat hourdateFormat = new SimpleDateFormat("HH:mm:ss-dd/MM/yyyy");
-            ficheroPdf = new FileOutputStream("informeUno.pdf");
+            ficheroPdf = new FileOutputStream("informe de especies.pdf");
             PdfWriter.getInstance(documento,ficheroPdf).setInitialLeading(20);
 
             // Se abre el documento.
             documento.open();
-            documento.add(new Paragraph("INFOME UNO ESPECIE: "+s));    
+            documento.add(new Paragraph("INFORME UNO ESPECIE: "+s));    
             documento.add(new Paragraph("Genero - Familia - Orden - Clase - Phylo/Division - Reino - Dominio"));
             //this.documento.add((Element) this.img);
             //System.out.println(consulta.size());

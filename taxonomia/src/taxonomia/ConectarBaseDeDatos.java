@@ -72,9 +72,13 @@ public class ConectarBaseDeDatos {
      */
     public void agregarEspecie(String datoID, String datoEspecie, String datoGenero, String datoFamilia,
             String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio, String imagen) {
+        ArrayList<String[]> consulta = new ArrayList<>();
+        String[] cadena;
         if (conexion != null) {
             try {
                 try (java.sql.Statement st = conexion.createStatement()) {
+                    
+                    
                     if (imagen != null) {
                         String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
                                 + "dominio,rutaImagen) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
@@ -88,6 +92,7 @@ public class ConectarBaseDeDatos {
                         st.executeUpdate(sql);
 
                     }
+                   
 
                 }
 
@@ -162,7 +167,7 @@ public class ConectarBaseDeDatos {
             try {
                 try (java.sql.Statement st = conexion.createStatement()) {
 
-                    String sql = "select genero,familia,orden,clase,filo_division,reino,dominio from Categoria where especie = 'camila'";
+                    String sql = "select genero,familia,orden,clase,filo_division,reino,dominio from Categoria where especie = '" + s+ "'";
                     ResultSet resultado = st.executeQuery(sql);
                     while (resultado.next()) {
                         cadena = new String[7];
@@ -182,14 +187,14 @@ public class ConectarBaseDeDatos {
                         String filo_division = resultado.getString("filo_division");
                         cadena[i] = filo_division;
                         i++;
-                        String reino = resultado.getString("reino");
-                        cadena[i] = reino;
+                        String r = resultado.getString("reino");
+                        cadena[i] = r;
                         i++;
-                        String dominio = resultado.getString("dominio");
-                        cadena[i] = dominio;
+                        String d = resultado.getString("dominio");
+                        cadena[i] = d;
                         consulta.add(cadena);
-
                     }
+                    return consulta;
 
                 }
             } catch (SQLException e) {
@@ -205,10 +210,11 @@ public class ConectarBaseDeDatos {
          * familia
          *
          * @param s La familia relacionada
+     * @param conexion
          * @return ArrayList con las relaciones
          * @throws SQLException
          */
-    public ArrayList<String[]> consultaSQL2(String s) throws SQLException {
+    public ArrayList<String[]> consultaSQL2(String s, Connection conexion) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
         String[] cadena;
         //his.CBD.crearConexion("Taxionomia","1");
@@ -216,7 +222,8 @@ public class ConectarBaseDeDatos {
         {
             try {
                 java.sql.Statement st = conexion.createStatement();
-                String sql = "select especie,genero,reino,orden,clase,filo_division,dominio from Categoria where familia = " + "'" + s + "'";
+              
+                String sql = "select especie,genero,reino,orden,clase,filo_division,dominio from Categoria where familia = '"+  s  + "'";
                 ResultSet resultado = st.executeQuery(sql);
                 while (resultado.next()) {
                     cadena = new String[7];
@@ -244,16 +251,15 @@ public class ConectarBaseDeDatos {
                     consulta.add(cadena);
                     // se obtuvieron todos los datos, falta que quieren que retorne los datos.
                     //String reino = resultado.getString("apellido");// para capturar la imagen
-
+                    System.out.println("Entro al informe 2");
                 }
-                resultado.close();
-                st.close();
+                return consulta;
                 //conexion.close();
             } catch (SQLException e) {
                 System.out.println("ERROR DE consulta 2");
             }
         }
-        return consulta;
+        return null;
 
     }
 
@@ -264,14 +270,14 @@ public class ConectarBaseDeDatos {
      * @return ArrayList con las relaciones
      * @throws SQLException
      */
-    public ArrayList<String[]> consultaSQL3(String s) throws SQLException {
+    public ArrayList<String[]> consultaSQL3(String s, Connection conexion) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
         String[] cadena;
         if (conexion != null)// si hay conexion
         {
             try {
                 java.sql.Statement st = conexion.createStatement();
-                String sql = "select especie,genero,familia,orden,clase,filo_division,dominio from Categoria where reino = " + "'" + s + "'";
+                String sql = "select especie,genero,familia,orden,clase,filo_division,dominio from Categoria where reino = '" + s + "'";
                 ResultSet resultado = st.executeQuery(sql);
                 while (resultado.next()) {
                     cadena = new String[7];
@@ -297,18 +303,20 @@ public class ConectarBaseDeDatos {
                     String dominio = resultado.getString("dominio");
                     cadena[i] = dominio;
                     consulta.add(cadena);
+                    
                     // se obtuvieron todos los datos, falta que quieren que retorne los datos.
                     //String reino = resultado.getString("apellido");// para capturar la imagen
 
                 }
-                resultado.close();
-                st.close();
+                
+
+                return consulta;
                 //conexion.close();
             } catch (SQLException e) {
                 System.out.println("ERROR DE consulta 3");
             }
         }
-        return consulta;
+        return null;
 
     }
 
