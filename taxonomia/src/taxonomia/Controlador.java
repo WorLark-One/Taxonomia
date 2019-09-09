@@ -49,8 +49,16 @@ public class Controlador {
      * @param lista Lista de los nombres de los distintos taxones
      */
     public void crearEspecie(String[] lista, File file) {
+        Especie e = null;
+        if(file != null){
+            e = new Especie(lista[7],"Especie", file);
+            System.out.println(file);
+        }
+        else{
+            e = new Especie(lista[7],"Especie");
+            System.out.println(file);
+        }             
         
-        Especie e = new Especie(lista[7],"Especie", file);
         Compuesto g = new Compuesto(lista[6],"Genero");
         Compuesto f = new Compuesto(lista[5],"Familia");
         Compuesto o = new Compuesto(lista[4],"Orden");

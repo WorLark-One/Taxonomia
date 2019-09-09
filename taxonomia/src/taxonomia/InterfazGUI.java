@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ruben
  */
 public class InterfazGUI extends javax.swing.JFrame {
 
@@ -533,9 +532,9 @@ public class InterfazGUI extends javax.swing.JFrame {
     private void añadirImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_añadirImagenActionPerformed
         this.file.removeAll();                              
         try{
-         JFileChooser file=new JFileChooser();
+         file = new JFileChooser();
          file.showOpenDialog(this);
-         File abre=file.getSelectedFile();
+         abre=file.getSelectedFile();
          if(abre!=null){     
             FileReader archivos=new FileReader(abre);
             String tipo = file.getTypeDescription(abre);
@@ -632,13 +631,13 @@ public class InterfazGUI extends javax.swing.JFrame {
                 break;
             }
         }
-        this.controlador.crearEspecie(lista, this.file.getSelectedFile());
+        this.controlador.crearEspecie(lista, this.abre);
         JOptionPane.showMessageDialog(null, "Operación realizada correctamente");
         this.dominio.setText("");
         this.reino.setText("");
         this.phylum.setText("");
         this.clase.setText("");
-        this.orden.setText("");;
+        this.orden.setText("");
         this.familia.setText("");
         this.genero.setText("");
         this.especie.setText("");
@@ -687,6 +686,7 @@ public class InterfazGUI extends javax.swing.JFrame {
     private javax.swing.JTextField phylum;
     private javax.swing.JTextField reino;
     // End of variables declaration//GEN-END:variables
+    private File abre;
     public void generarInforme() {
         // TODO implement here
     }
