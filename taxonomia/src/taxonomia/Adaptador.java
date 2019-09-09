@@ -1,9 +1,13 @@
 package taxonomia;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  * Clase adaptador encargado de adaptar datos y dirigir la entrada y salida de informacion de la base de datos.
@@ -180,21 +184,30 @@ public class Adaptador implements IAdaptador {
             
             String a = String.valueOf(this.ID);
             
-            this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio,this.convertirFile());
-            this.ID ++;
-            this.estado = new Libre();
+            try {
+                this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio,this.convertirFile());
+                this.ID ++;
+                this.estado = new Libre();
+            } catch (IOException ex) {
+                Logger.getLogger(Adaptador.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
         }
     }
     
-    private byte[] convertirFile(){
+    private byte[] convertirFile() throws IOException{
         //init array with file length
-        if(this.imagen!=null)
-        {
-            byte[] bytesArray = new byte[(int) this.imagen.length()]; 
-            
+        if(this.imagen!=null){
+            BufferedImage originalImage = ImageIO.read(this.imagen);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write( originalImage, "jpg", baos );
+            baos.flush();
+            byte[] bytesArray = baos.toByteArray();
+            baos.close();
             return bytesArray;
+            
         }
-        System.out.println("hola");
+        //System.out.println("hola");
         return null;
     }
     
