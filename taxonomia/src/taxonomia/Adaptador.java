@@ -195,17 +195,11 @@ public class Adaptador implements IAdaptador {
         }
     }
     
-    private byte[] convertirFile() throws IOException{
+    private String convertirFile() throws IOException{
         //init array with file length
         if(this.imagen!=null){
-            BufferedImage originalImage = ImageIO.read(this.imagen);
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write( originalImage, "jpg", baos );
-            baos.flush();
-            byte[] bytesArray = baos.toByteArray();
-            baos.close();
-            return bytesArray;
-            
+            String s = null;
+            return s = this.imagen.toString();
         }
         //System.out.println("hola");
         return null;
