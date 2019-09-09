@@ -176,10 +176,17 @@ public class Adaptador implements IAdaptador {
             this.estado = new Ocupado();
             this.CBD = new ConectarBaseDeDatos();
             String a = String.valueOf(this.ID);
-            this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio);
+            this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio,this.convertirFile());
             this.ID ++;
             this.estado = new Libre();
         }
+    }
+    
+    private byte[] convertirFile(){
+        //init array with file length
+        byte[] bytesArray = new byte[(int) this.imagen.length()]; 
+
+        return bytesArray;
     }
     
 }
