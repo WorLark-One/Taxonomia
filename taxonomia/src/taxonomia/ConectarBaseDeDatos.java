@@ -59,7 +59,7 @@ public class ConectarBaseDeDatos {
     }
 
     /**
-     * por el momento no esta implementada para almacenar imagenes.
+     * Por el momento no esta implementada para almacenar imagenes.
      *
      * @param datoID
      * @param datoEspecie
@@ -71,7 +71,7 @@ public class ConectarBaseDeDatos {
      * @param reino
      * @param dominio
      */
-    public void agregarPersona(String datoID, String datoEspecie, String datoGenero, String datoFamilia,
+    public void agregarEspecie(String datoID, String datoEspecie, String datoGenero, String datoFamilia,
             String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio) {
         if (conexion != null) {
             try {
@@ -136,6 +136,12 @@ public class ConectarBaseDeDatos {
 
     }
     
+    /**
+     * consulta simple sobre los datos almacenados relacionados con una especie
+     * @param s La especie relacionada
+     * @return ArrayList con las relaciones
+     * @throws SQLException 
+     */
     public ArrayList<String[]> consultaSQL1(String s) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
         String[] cadena ;
@@ -185,6 +191,13 @@ public class ConectarBaseDeDatos {
 
     }
     
+    
+    /**
+     * consulta simple sobre los datos almacenados relacionados con una familia
+     * @param s La familia relacionada
+     * @return ArrayList con las relaciones
+     * @throws SQLException 
+     */
     public ArrayList<String[]> consultaSQL2(String s) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
         String[] cadena ;
@@ -233,10 +246,13 @@ public class ConectarBaseDeDatos {
 
     }
     
-    
-    
-    
-    
+
+    /**
+     * consulta simple sobre los datos almacenados relacionados con un reino
+     * @param s el reino relacionado
+     * @return ArrayList con las relaciones
+     * @throws SQLException 
+     */
     public ArrayList<String[]> consultaSQL3(String s) throws SQLException {
         ArrayList<String[]> consulta = new ArrayList<>();
         String[] cadena ;

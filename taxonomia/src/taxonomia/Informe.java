@@ -1,8 +1,7 @@
 package taxonomia;
-import java.util.*;
 
 /**
- * 
+ * Clase abstracta de informe
  */
 public abstract class Informe {
     
@@ -13,9 +12,11 @@ public abstract class Informe {
     }
 
     /**
-     * 
+     * Metodo que degener el informe
      */
     public void generarInforme() {
+
         // TODO implement here
     }           
+
 }

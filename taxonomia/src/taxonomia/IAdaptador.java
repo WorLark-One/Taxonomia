@@ -1,25 +1,14 @@
 package taxonomia;
-import java.awt.Image;
-import java.io.File;
-import java.util.*;
 
 /**
- * 
+ * Interfaz adapter para adaptar datos
  */
 public interface IAdaptador {
 
-    /**
-     * 
-     * @param n
-     */
-    
     public void insertarHaciaBD();
     public void generarInforme(int n, String s);
-    
     public void generarInforme1(String s);
-    
     public void generarInforme2(String s);
-    
     public void generarInforme3(String s);
 
 }

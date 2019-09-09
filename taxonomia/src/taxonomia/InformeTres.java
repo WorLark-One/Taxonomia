@@ -1,9 +1,7 @@
 package taxonomia;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Paragraph;
-import java.io.File;
 import java.io.FileOutputStream;
-import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -14,12 +12,13 @@ import java.util.*;
 public class InformeTres extends Informe {
     private ArrayList<String[]> consulta;
     private Document documento ;
-    private File img ;
     private String s ;
     
     
     /**
-     * Default constructor
+     * Constructor de la clase InformeTres
+     * @param consulta ArrayList con el conjunto de datos para agregar en el pdf
+     * @param s String que corresponde a lo que se consultó
      */
     public InformeTres(ArrayList<String[]> consulta,String s) {
         // TODO implement here
@@ -30,7 +29,7 @@ public class InformeTres extends Informe {
     }
 
     /**
-     * 
+     * Metodo que degener el informe 3 en pdf
      */
     @Override
     public void generarInforme() {
@@ -48,10 +47,6 @@ public class InformeTres extends Informe {
                 documento.add(new Paragraph(this.consulta.get(i)[0]+" - "+this.consulta.get(i)[1]+" - "+this.consulta.get(i)[2]+" - "+this.consulta.get(i)[3]+" - "+this.consulta.get(i)[4]+" - "+this.consulta.get(i)[5]+" - "+this.consulta.get(i)[6]));
             }
             documento.close();
-
-            //especie,genero,familia,orden,clase,filo_division,dominio
-            
-            
         } catch (Exception e) {
             e.printStackTrace();
         }

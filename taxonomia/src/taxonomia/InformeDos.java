@@ -4,8 +4,6 @@ import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-import java.awt.Image;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.text.DateFormat;
@@ -20,11 +18,13 @@ import java.util.logging.Logger;
  */
 public class InformeDos extends Informe {
     private Document documento ;
-    private File img ;
     private ArrayList<String[]> consulta;
     private String s ;
+    
     /**
-     * Default constructor
+     * Constructor de la clase InformeDos
+     * @param consulta ArrayList con el conjunto de datos para agregar en el pdf
+     * @param s String que corresponde a lo que se consultó
      */
     public InformeDos(ArrayList<String[]> consulta,String s) {
         documento = new Document();
@@ -33,7 +33,7 @@ public class InformeDos extends Informe {
     }
 
     /**
-     * 
+     * Metodo que degener el informe 2 en pdf
      */
     @Override
     public void generarInforme() {

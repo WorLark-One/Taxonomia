@@ -6,13 +6,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Clase adaptador
+ * Clase adaptador encargado de adaptar datos y dirigir la entrada y salida de informacion de la base de datos.
  */
 public class Adaptador implements IAdaptador {
     private InformeTexto infTexto;
     private InformeDos infImagen;
     private InformeTres infTres;
-    private Estado estado;
     
     
     private Compuesto raiz;
@@ -31,14 +30,17 @@ public class Adaptador implements IAdaptador {
     private ConectarBaseDeDatos CBD;
 
     /**
-     * Default constructor
+     * Constructor de adaptador
      */
     public Adaptador() {
         this.estado = new Libre();
        
     }
+    
     /**
-     * 
+     * Metodo que se encarga de direccionar a la generacion de informe correspondiente
+     * @param n int que indica el informe que se quiere generar
+     * @param s String que corresponde a lo que se quiere consultar
      */
     @Override
     public void generarInforme(int n,String s) {
@@ -46,7 +48,7 @@ public class Adaptador implements IAdaptador {
             this.generarInforme1(s);
         }
         if (n==2) {
-            //this.generarInforme2(s);
+            this.generarInforme2(s);
         }
         if (n==3) {
             this.generarInforme3(s);
@@ -55,6 +57,10 @@ public class Adaptador implements IAdaptador {
     
     }
     
+    /**
+     * Metodo que se encarga de adaptar los datos del arbol para ingresarlos en la BD
+     * @param dominio arbol generado, con los datos ingresados
+     */
     public void guardarDatos(Compuesto dominio){
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
@@ -82,6 +88,9 @@ public class Adaptador implements IAdaptador {
         }
     }
     
+    /**
+     * Metodo que imprime los datos 
+     */
     public void imprimir(){
         System.out.println(this.Dominio);
         System.out.println(this.Reino);
@@ -95,7 +104,10 @@ public class Adaptador implements IAdaptador {
     
     
     
-   
+   /**
+     * Metodo que se encarga de direccionar la generacion del informe 1
+     * @param s String que corresponde a lo que se quiere consultar
+     */
     @Override
     public void generarInforme1(String s) {
         //s = especie del primer infome 
@@ -113,6 +125,10 @@ public class Adaptador implements IAdaptador {
         }
     }
 
+    /**
+     * Metodo que se encarga de direccionar la generacion del informe 2
+     * @param s String que corresponde a lo que se quiere consultar
+     */
     @Override
     public void generarInforme2(String s) {
         if(!this.estado.manejar()){
@@ -129,6 +145,10 @@ public class Adaptador implements IAdaptador {
         }
     }
 
+    /**
+     * Metodo que se encarga de direccionar la generacion del informe 3
+     * @param s String que corresponde a lo que se quiere consultar
+     */
     @Override
     public void generarInforme3(String s) {
         if(!this.estado.manejar()){
@@ -146,13 +166,16 @@ public class Adaptador implements IAdaptador {
     }
 
 
+    /**
+     * Metodo que se encarga de entregar los datos adaptados para su posterior ingreso a la BD
+     */
     @Override
     public void insertarHaciaBD() {
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
             this.CBD = new ConectarBaseDeDatos();
             String a = String.valueOf(this.ID);
-            this.CBD.agregarPersona(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio);
+            this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio);
             this.ID ++;
             this.estado = new Libre();
         }
