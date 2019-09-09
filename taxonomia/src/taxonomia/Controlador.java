@@ -67,7 +67,7 @@ public class Controlador {
         g.agregarSubTaxon(e);
         adaptador.guardarDatos(d);
         raiz.agregarSubTaxon(d);
-        //adaptador.insertarHaciaBD();cuando el brayan termine la funcion descomentar
+        adaptador.insertarHaciaBD();//cuando el brayan termine la funcion descomentar
         //Funcion que se encarga de imprimir el arbol, sirve para validar
         //raiz.imprimirArbol();
     }

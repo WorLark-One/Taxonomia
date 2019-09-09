@@ -175,7 +175,11 @@ public class Adaptador implements IAdaptador {
         if(!this.estado.manejar()){
             this.estado = new Ocupado();
             this.CBD = new ConectarBaseDeDatos();
+            
+            this.CBD.crearConexion("Taxionomia","1");
+            
             String a = String.valueOf(this.ID);
+            
             this.CBD.agregarEspecie(a,Especie, Genero, Familia, Orden, Clase,Phylum, Reino, Dominio,this.convertirFile());
             this.ID ++;
             this.estado = new Libre();
@@ -184,9 +188,14 @@ public class Adaptador implements IAdaptador {
     
     private byte[] convertirFile(){
         //init array with file length
-        byte[] bytesArray = new byte[(int) this.imagen.length()]; 
-
-        return bytesArray;
+        if(this.imagen!=null)
+        {
+            byte[] bytesArray = new byte[(int) this.imagen.length()]; 
+            
+            return bytesArray;
+        }
+        System.out.println("hola");
+        return null;
     }
     
 }

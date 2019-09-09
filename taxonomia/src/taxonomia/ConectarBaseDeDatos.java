@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -18,12 +19,6 @@ import java.util.ArrayList;
 public class ConectarBaseDeDatos {
 
     private Connection conexion = null;
-
-    public ConectarBaseDeDatos() {
-    //supuestamente creariamos la conexion o no aqui
-    }
-    
-    
 
     public Connection getConexion() {
         return conexion;
@@ -38,18 +33,20 @@ public class ConectarBaseDeDatos {
      * @return true si se realiza la conexion, false de lo contrario
      */
     public boolean crearConexion(String nombreBD, String contraseña) {
+       
         String url = "jdbc:postgresql://localhost:5432/" + nombreBD + "";// la url incluye el puerto y nombre del proyecto
         String password = "" + contraseña + "";// contraseña de postgres
         String usuario = "postgres";
         try {
             Class.forName("org.postgresql.Driver");
 
-            conexion = DriverManager.getConnection(url, usuario, password);
-
+            conexion = DriverManager.getConnection(url,usuario,password);
+            
             if (conexion != null) {
-                //System.out.println("Conexion exitosa!!");
+                System.out.println("Conexion exitosa!!");
                 return true;
             }
+            
         } catch (SQLException ex) {
             System.out.println("error en conexion: " + ex);
         } catch (ClassNotFoundException ex) {
@@ -70,18 +67,28 @@ public class ConectarBaseDeDatos {
      * @param datoFiloDivicion
      * @param reino
      * @param dominio
+     * @param imagen
      */
     public void agregarEspecie(String datoID, String datoEspecie, String datoGenero, String datoFamilia,
-            String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio) {
+            String datoOrden, String datoClase, String datoFiloDivicion, String reino, String dominio,byte[] imagen) {
         if (conexion != null) {
             try {
-                java.sql.Statement st = conexion.createStatement();
-                String sql = "INSERT INTO Categoria(id,especie,genero,familia,orden,clase,filo_division,reino"
-                        + "dominio) VALUES('" + datoID + "','" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
-                        + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "')";
-                st.executeUpdate(sql);
-
-                st.close();
+                try (java.sql.Statement st = conexion.createStatement()) {
+                    if(imagen!= null)
+                    {
+                        String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
+                            + "dominio,imagen) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
+                            + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "','" + "{"+imagen+"}" + "')";
+                            st.executeUpdate(sql);
+                    }else{
+                    String sql = "INSERT INTO categoria(especie,genero,familia,orden,clase,filo_division,reino,"
+                            + "dominio) VALUES('" + datoEspecie + "','" + datoGenero + "','" + datoFamilia + "',"
+                            + "'" + datoOrden + "','" + datoClase + "','" + datoFiloDivicion + "','" + reino + "','" + dominio + "')";
+                            st.executeUpdate(sql);
+                        
+                    }
+                    
+                }
 
             } catch (SQLException e) {
                 System.out.println("ERROR DE CONEXION" + e);
